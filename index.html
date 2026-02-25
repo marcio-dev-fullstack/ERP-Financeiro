@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERP Financeiro - Sistema de Gestão Financeira</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <div class="flex h-screen overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-64 gradient-bg text-white flex flex-col shadow-2xl">
+            <div class="p-6 border-b border-white/20">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-white rounded-lg flex items-center justify-center">
+                        <i class="fas fa-chart-line text-purple-600 text-xl"></i>
+                    </div>
+                    <div>
+                        <h1 class="font-bold text-lg">FinanceiroPro</h1>
+                        <p class="text-xs text-purple-200">ERP Completo</p>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="flex-1 py-6 px-3 space-y-1 custom-scrollbar overflow-y-auto" id="sidebar-nav">
+                <!-- Menu items serão inseridos via JS -->
+            </nav>
+
+            <div class="p-4 border-t border-white/20">
+                <div class="flex items-center gap-3">
+                    <img src="https://ui-avatars.com/api/?name=Admin&background=random" class="w-10 h-10 rounded-full" alt="Admin">
+                    <div>
+                        <p class="font-medium text-sm">Administrador</p>
+                        <p class="text-xs text-purple-200">admin@empresa.com</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-y-auto custom-scrollbar">
+            <!-- Top Bar -->
+            <header class="glass-effect sticky top-0 z-40 px-8 py-4 shadow-sm flex justify-between items-center">
+                <div>
+                    <h2 id="page-title" class="text-2xl font-bold text-gray-800">Dashboard Financeiro</h2>
+                    <p class="text-sm text-gray-500">Visão geral em tempo real</p>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-sm">
+                        <i class="fas fa-calendar text-gray-400"></i>
+                        <span class="text-sm font-medium" id="current-date">Fev 2025</span>
+                    </div>
+                    <button class="w-10 h-10 bg-white rounded-lg shadow-sm flex items-center justify-center hover:bg-gray-50 relative">
+                        <i class="fas fa-bell text-gray-600"></i>
+                        <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full"></span>
+                    </button>
+                </div>
+            </header>
+
+            <div class="p-8" id="main-content">
+                <!-- Conteúdo dinâmico será carregado aqui -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal Nova Conta -->
+    <div id="modalNovaConta" class="fixed inset-0 bg-black/50 hidden items-center justify-center z-50">
+        <div class="bg-white rounded-xl w-full max-w-lg p-6 animate-fade-in">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold">Novo Lançamento</h3>
+                <button onclick="modalModule.closeModal('novaConta')" class="text-gray-400 hover:text-gray-600">
+                    <i class="fas fa-times text-xl"></i>
+                </button>
+            </div>
+            <form id="formNovaConta" class="space-y-4">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Tipo</label>
+                        <select name="tipo" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            <option value="receber">Contas a Receber</option>
+                            <option value="pagar">Contas a Pagar</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Documento</label>
+                        <input type="text" name="documento" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="NF-001">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Cliente/Fornecedor</label>
+                    <input type="text" name="cliente" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="Nome">
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Vencimento</label>
+                        <input type="date" name="vencimento" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Valor</label>
+                        <input type="text" name="valor" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" placeholder="R$ 0,00">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Descrição</label>
+                    <textarea name="descricao" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500" rows="3"></textarea>
+                </div>
+                <div class="flex gap-3 pt-4">
+                    <button type="button" onclick="modalModule.closeModal('novaConta')" class="flex-1 px-4 py-2 border rounded-lg hover:bg-gray-50">Cancelar</button>
+                    <button type="submit" class="flex-1 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/modules/dashboard.js"></script>
+    <script src="js/modules/contas.js"></script>
+    <script src="js/modules/fluxo.js"></script>
+    <script src="js/modules/dre.js"></script>
+    <script src="js/modules/banco.js"></script>
+    <script src="js/modules/boletos.js"></script>
+    <script src="js/modules/relatorios.js"></script>
+    <script src="js/charts.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
