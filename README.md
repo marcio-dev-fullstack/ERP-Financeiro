@@ -107,6 +107,3 @@ php -S localhost:8000
 Todos os direitos reservados © 2026 KM Engenharia & Tecnologia.
 
 É proibida a reprodução, distribuição ou modificação deste projeto sem autorização expressa.
-
-KM Engenharia & Tecnologia
-Soluções em engenharia com excelência técnica
