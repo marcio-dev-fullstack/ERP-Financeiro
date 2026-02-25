@@ -62,7 +62,7 @@ erp_financeiro/
 - Diversos relatórios pré-configurados
 - Relatórios personalizados
 
-## 🛠️ Tecnologias
+## Tecnologias
 
 - **HTML5** - Estrutura semântica
 - **CSS3** - Estilização moderna com Tailwind-like classes
