@@ -2,7 +2,7 @@
 
 Sistema ERP completo para gestão financeira empresarial, desenvolvido com HTML, CSS e JavaScript vanilla.
 
-## 📁 Estrutura de Pastas
+## Estrutura de Pastas
 
 ```
 erp_financeiro/
@@ -24,7 +24,7 @@ erp_financeiro/
 └── assets/                # Imagens e recursos
 ```
 
-## 🚀 Funcionalidades
+## Funcionalidades
 
 ### 1. Dashboard
 - KPIs em tempo real (Saldo, Contas a Receber/Pagar)
@@ -71,7 +71,7 @@ erp_financeiro/
 - **Font Awesome** - Ícones
 - **Google Fonts** - Tipografia Inter
 
-## 📱 Recursos
+## Recursos
 
 - Design responsivo
 - Interface moderna e intuitiva
@@ -80,14 +80,14 @@ erp_financeiro/
 - Modais interativos
 - Gráficos dinâmicos
 
-## 🚀 Como Usar
+## Como Usar
 
 1. Abra o arquivo `index.html` em um navegador moderno
 2. Navegue pelo menu lateral
 3. Explore todas as funcionalidades
 4. Dados de demonstração já inclusos
 
-## 💻 Desenvolvimento
+## Desenvolvimento
 
 Para desenvolvimento, recomenda-se usar um servidor local:
 
@@ -102,9 +102,11 @@ npx serve
 php -S localhost:8000
 ```
 
-## 📝 Licença
+## Licença
 
-Este projeto é apenas para fins de demonstração.
+Todos os direitos reservados © 2026 KM Engenharia & Tecnologia.
 
----
-Desenvolvido com ❤️ para gestão financeira empresarial.
+É proibida a reprodução, distribuição ou modificação deste projeto sem autorização expressa.
+
+KM Engenharia & Tecnologia
+Soluções em engenharia com excelência técnica
